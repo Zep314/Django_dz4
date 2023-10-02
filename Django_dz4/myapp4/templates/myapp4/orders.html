@@ -34,6 +34,7 @@
                 <th class="text-center align-middle" scope="col">Описание товара</th>
                 <th class="text-center align-middle" scope="col">Стоимость товара</th>
                 <th class="text-center align-middle" scope="col">Дата заказа товара</th>
+                <th class="text-center align-middle" scope="col">Изменение товара</th>
             </tr>
         </thead>
         <tbody>
@@ -46,12 +47,22 @@
                         <td>{{ product.description }}</td>
                         <td>{{ product.price }}</td>
                         <td>{{ order.order_date|date:"d.m.Y H:i:s" }}</td>
+                        <td>
+                            <form action="/product/" method="POST">
+                                <input type="hidden" value="{{ product.id }}">
+                                <input type="submit" class="btn btn-primary" value="Изменить">
+                            </form>
+                        </td>
                     </tr>
                 {% endfor %}
             {% endfor %}
         </tbody>
     </table>
-
+    <div>
+        <form action="/product/">
+            <input type="submit" class="btn btn-primary" value="Новый товар">
+        </form>
+    </div>
     {% include 'myapp4/menu.html' %}
 </div>
 

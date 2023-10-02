@@ -102,3 +102,4 @@ INFO 2023-10-02 19:48:22,188 create_product 67727 140040481304576 Successfully c
 INFO 2023-10-02 19:48:22,188 gen_fake_data 67727 140040481304576 Added 50 record into table Products
 INFO 2023-10-02 19:49:18,100 gen_fake_data 67727 140040481304576 Added 200 record into table Orders
 INFO 2023-10-02 19:50:13,302 views 67784 140389490259520 Index page accessed! Redirect to /lastday/0/7
+INFO 2023-10-02 19:54:51,990 views 67784 140389471376960 Index page accessed! Redirect to /lastday/0/7
