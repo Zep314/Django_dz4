@@ -1,0 +1,23 @@
+{% extends 'myapp4/base.html' %}
+
+{% block title %}
+Редактирование товара
+{% endblock %}
+
+{% block header %}
+<h1>
+Редактирование товара
+</h1>
+{% endblock %}
+
+{% block content %}
+<h3>{{ message }}</h3>
+<div>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_div }}
+        <input type="submit" value="Сохранить">
+        <input type="reset" value="Очистить">
+    </form>
+</div>
+{% endblock %}
