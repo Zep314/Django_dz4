@@ -10,14 +10,30 @@
 </h1>
 {% endblock %}
 
+{% load widget_tweaks %}
+
 {% block content %}
 <h3>{{ message }}</h3>
 <div>
-    <form action="" method="POST">
+
+    <form action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_div }}
-        <input type="submit" value="Сохранить">
-        <input type="reset" value="Очистить">
+
+        {% for hidden_field in form.hidden_fields %}
+            {{ hidden_field }}
+        {% endfor %}
+
+        {% for field in form.visible_fields %}
+            <div class="form-group">
+                {{ field.label_tag }}
+                {% render_field field class="form-control" %}
+                {% if field.help_text %}
+                    <small class="form-text text-muted">{{ field.help_text }}</small>
+                {% endif %}
+            </div>
+        {% endfor %}
+        <input type="submit" class="btn btn-primary" value="Сохранить">
+        <input type="reset" class="btn btn-primary" value="Очистить">
     </form>
 </div>
 {% endblock %}

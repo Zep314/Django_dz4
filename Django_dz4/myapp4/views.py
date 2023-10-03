@@ -6,6 +6,7 @@ from django.utils import timezone
 from datetime import datetime, timedelta
 from .forms import ProductForm
 from .models import Product
+from django.core.files.storage import FileSystemStorage
 
 # Create your views here.
 
@@ -69,7 +70,6 @@ class ProductView(View):
 
             # Нажали кнопку РЕДАКТИРОВАТЬ - отображаем форму с редактируемыми данными
             product = Product.objects.filter(pk=request.POST['product_id']).first()
-            logger.info(f"!!!!!!!!!!!{product}")
             initial = {'id': str(request.POST['product_id']),
                        'name': product.name,
                        'description': product.description,
@@ -78,20 +78,35 @@ class ProductView(View):
                        }
             form = ProductForm(initial=initial)
             message = 'Измените данные'
+            return render(request, 'myapp4/product.html', {'form': form, 'message': message})
+        else:
+            form = ProductForm(request.POST, request.FILES)
             if form.is_valid():
+                product_id = form.cleaned_data['id']
                 name = form.cleaned_data['name']
                 description = form.cleaned_data['description']
                 price = form.cleaned_data['price']
                 amount = form.cleaned_data['amount']
+                image = form.cleaned_data['image']
+                fs = FileSystemStorage()
+                logger.info(f'Image: {image.name=}')
+                fs.save(image.name, image)
 
-                product = Product(name=name, description=description,
-                                  price=str(price), amount=amount)
+                product = None
+                if product_id == 0:
+                    product = Product(name=name, description=description,
+                                      price=str(price), amount=amount, image=image.name)
+                else:
+                    product = Product.objects.filter(pk=product_id).first()
+                    product.name=name
+                    product.description=description
+                    product.price=price
+                    product.amount=amount
+                    product.image = image.name
                 product.save()
                 message = 'Данные сохранены'
-            return render(request, 'myapp4/product.html', {'form': form, 'message': message})
-        else:
-            product = Product(name=request.POST['name'], description=request.POST['description'],
-                          price=request.POST['price'], amount=request.POST['amount'])
-            product.save()
-            logger.info(f'Successfully create product: {product}')
-            return redirect("/lastday/0/7")
+                logger.info(f'Successfully create product: {product}')
+                return redirect("/lastday/0/7")
+            else:
+                message = 'Ошибка в данных'
+                return render(request, 'myapp4/product.html', {'form': form, 'message': message})
