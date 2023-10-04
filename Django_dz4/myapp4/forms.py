@@ -2,7 +2,9 @@ from django import forms
 
 
 class ProductForm(forms.Form):
-    # id = forms.HiddenInput() # IntegerField()
+    """
+    Класс - представление для формы создания/редактирования товара
+    """
     id = forms.IntegerField(widget=forms.HiddenInput())
     name = forms.CharField(max_length=50,
                            label='Наименование товара',

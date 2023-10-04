@@ -30,8 +30,8 @@ class Product(models.Model):
     create_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'Name: \'{self.name}\' ,Description: \'{self.description}\' ,Price: {self.price:.2f} ' \
-               f',Amount: {self.amount} ,Create_date: {self.create_date} '
+        return f'Name: \'{self.name}\', Description: \'{self.description}\', Price: {self.price:.2f}' \
+               f', Amount: {self.amount},Image: {self.image}, Create_date: {self.create_date} '
 
 
 class Order(models.Model):

@@ -1059,3 +1059,6 @@ INFO 2023-10-03 19:20:12,915 views 86995 140694981158464 Successfully create pro
 INFO 2023-10-03 19:21:27,118 views 87088 140687425140288 Image: image.name='0-02-05-e639b6d20c69451b765b9d893909baab414c4890b16ab479d2878a74d99b66eb_20742b59f157c7.jpg'
 INFO 2023-10-03 19:21:27,129 views 87088 140687425140288 Successfully create product: Name: 'Р—Р°СЏРІР»РµРЅРёРµ РїСЂРёСЃРµСЃС‚СЊ50' ,Description: 'qwe qwe qwe qwe qwe' ,Price: 1785.40 ,Amount: 44 ,Create_date: 2023-10-02 19:48:17.454856+00:00 
 INFO 2023-10-03 19:57:09,910 views 88950 140223982769728 Index page accessed! Redirect to /lastday/0/7
+INFO 2023-10-04 08:14:30,960 views 3160 27508 Image: image.name='earth.png'
+INFO 2023-10-04 08:14:30,979 views 3160 27508 Successfully create product: Name: 'Заявление присесть50' ,Description: 'qwe qwe qwe qwe qwe' ,Price: 1785.40 ,Amount: 44 ,Create_date: 2023-10-02 19:48:17.454856+00:00 
+INFO 2023-10-04 09:03:51,280 views 24524 27164 Index page accessed! Redirect to /lastday/0/7

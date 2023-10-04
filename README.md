@@ -10,7 +10,6 @@
 
 <details>
 <summary> Задание у уроку 2: </summary>
-==========================
 ---=== Урок 2 ===---
 
 
@@ -39,6 +38,10 @@
 — дата оформления заказа
 
 Допишите несколько функций CRUD для работы с моделями по желанию. Что по вашему мнению актуально в такой базе данных.
+</details>
+
+<details>
+<summary> Задание у уроку 3: </summary>
 
 
 ---=== Урок 3 ===---
@@ -59,10 +62,8 @@
 
 ### Решение
 
-Повторяем действия для создания приложения 
-
 <details>
-<summary>Действия:</summary>
+<summary>Повторяем действия для создания приложения:</summary>
 Выполняем стандартные процедуры для запуска нового приложения в новом проекте:
 
 Устанавливаем Django:
@@ -134,7 +135,6 @@ Many-to-Many с таблицей товаров (Product).
 Файл с журналом работы:
 
 - [logs/django.log](/Django_dz4/logs/django.log) 
-</details>
 
 Для более удобной работы был написан генератор фейковых данных
  
@@ -154,5 +154,48 @@ Many-to-Many с таблицей товаров (Product).
 
 Для более эстетичного восприятия был добавлен [bootstrap](https://getbootstrap.com/)
 
+</details>
+
+Так же - изменяем модель данных - добавляем поле для хранения имени файла-изображения для товара.
+Поле может принимать значение NULL, что указываем в модели данных. Не забываем сделать миграцию.
+
+- [Django_dz4/Django_dz4/myapp4/models.py](/Django_dz4/myapp4/models.py)
+
+Так же - создаем папку для хранения изображений, и указываем ее в настройках 
+
+- [Django_dz4/Django_dz4/Django_dz4/settings.py](/Django_dz4/Django_dz4/settings.py)
+
+
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = BASE_DIR / 'myapp4/media'
+
+В файле *urls.py* указываем маршруты к новой форме редактирования товара, и к папке, 
+в которой хранятся изображения  
+
+- [Django_dz4/Django_dz4/Django_dz4/urls.py](/Django_dz4/Django_dz4/urls.py)
+
+Разрабатываем представление для формы создания/редактирования товара: 
+
+- [Django_dz4/Django_dz4/myapp4/forms.py](/Django_dz4/myapp4/forms.py)
+
+Разрабатываем шаблон для отображения формы создания/редактирования товара:
+
+- [Django_dz4/Django_dz4/myapp4/templates/myapp4/product.html](/Django_dz4/myapp4/templates/myapp4/product.html)
+
+В файле *views.py* описываем логику работы представления
+
+- [Django_dz4/Django_dz4/myapp4/views.py](/Django_dz4/myapp4/views.py)
+
+Прописываем маршрут и класс для отображения формы в файле *urls.py*
+
+- [Django_dz4/Django_dz4/myapp4/urls.py](/Django_dz4/myapp4/urls.py)
+
 ## Результат работы:
 
+Таблица заказов за 30 дней для определенного клиента:
+
+![screen2.png](screen2.png)
+
+Форма создания/редактирования товара с возможностью "привязать" изображение:
+
+![screen1.png](screen1.png)
