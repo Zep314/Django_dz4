@@ -169,8 +169,6 @@ Many-to-Many с таблицей товаров (Product).
         MEDIA_URL = '/media/'
         MEDIA_ROOT = BASE_DIR / 'myapp4/media'
 
-        python manage.py gen_fake_data.py 50 50 200
-
 В файле *urls.py* указываем маршруты к новой форме редактирования товара, и к папке, 
 в которой хранятся изображения  
 
